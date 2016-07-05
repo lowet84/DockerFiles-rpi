@@ -15,7 +15,7 @@ services:
     image: lowet84/jackett-rpi
     build: ./jackett
     volumes:
-     - /volumes/mediaserver/jackett:/root/.config/Jackett
+     - /volumes/mediaserver/jackett:/config/.config/Jackett
     restart: always
     environment:
       JACKETT_KEY: d7nc8w37y4mc9348u9q83mqv
@@ -25,4 +25,4 @@ services:
       - traefik.backend=jackett
       - traefik.frontend.passHostHeader=true
       - traefik.port=9117
-      - traefik.frontend.rule=Host:jackett.pi
+      - traefik.frontend.rule=Host:jackett.${DOMAIN}
