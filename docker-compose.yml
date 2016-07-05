@@ -1,0 +1,28 @@
+version: '2'
+
+services: 
+  traefik:
+    image: nsteinmetz/traefik-arm
+    restart: always
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /volumes/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - /var/run/docker.sock:/var/run/docker.sock
+  
+  jackett:
+    image: lowet84/jackett-rpi
+    build: ./jackett
+    volumes:
+     - /volumes/mediaserver/jackett:/root/.config/Jackett
+    restart: always
+    environment:
+      JACKETT_KEY: d7nc8w37y4mc9348u9q83mqv
+    ports:
+     - 9117:9117
+    labels:
+      - traefik.backend=jackett
+      - traefik.frontend.passHostHeader=true
+      - traefik.port=9117
+      - traefik.frontend.rule=Host:jackett.pi
