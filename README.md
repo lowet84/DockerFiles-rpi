@@ -1,6 +1,6 @@
 # Media server for Raspberry Pi
 ## Contents
-[https://github.com/Jackett/Jackett]Jackett - Proxy for closed torrent sites
+[Jackett](https://github.com/Jackett/Jackett) - Proxy for closed torrent sites
 
 
 ## Usage
