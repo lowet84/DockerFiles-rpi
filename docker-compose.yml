@@ -26,3 +26,20 @@ services:
       - traefik.frontend.passHostHeader=true
       - traefik.port=9117
       - traefik.frontend.rule=Host:jackett.${DOMAIN}
+
+  plex:
+    image: lowet84/plex-rpi
+    build: ./plex
+    privileged: true
+    volumes:
+     - /volumes/mediaserver/plex:/config
+    restart: always
+    ports:
+     - 32400:32400
+    labels:
+      - traefik.backend=plex
+      - traefik.frontend.passHostHeader=true
+      - traefik.port=32400
+      - traefik.frontend.rule=Host:plex.${DOMAIN}
+    environment:
+      USEMOUNT: 'false'
