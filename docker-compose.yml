@@ -33,6 +33,7 @@ services:
     privileged: true
     volumes:
      - /volumes/mediaserver/plex:/config
+     - /media:/mnt
     restart: always
     ports:
      - 32400:32400
@@ -41,5 +42,18 @@ services:
       - traefik.frontend.passHostHeader=true
       - traefik.port=32400
       - traefik.frontend.rule=Host:plex.${DOMAIN}
-    environment:
-      USEMOUNT: 'false'
+
+  deluge:
+    image: jordancrawford/rpi-deluge
+    volumes:
+     - /volumes/mediaserver/deluge:/config
+     - /media:/data
+    restart: always
+    ports: 
+     - 8112:8112
+     - 58846:58846
+    labels:
+      - traefik.backend=deluge
+      - traefik.frontend.passHostHeader=true
+      - traefik.port=8112
+      - traefik.frontend.rule=Host:deluge.${DOMAIN}
