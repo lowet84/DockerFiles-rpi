@@ -6,8 +6,8 @@
 * [Jackett](https://github.com/Jackett/Jackett) - Tracker proxy
 
 
-## Usage
-set env DOMAIN to the domain you want to use.
+## Domain setup
+set env DOMAIN to the domain you want to use. (plex.rpi etc.)
 
 ```
 export DOMAIN=rpi
