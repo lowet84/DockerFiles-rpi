@@ -7,8 +7,15 @@
 
 
 ## Domain setup
-set env DOMAIN to the domain you want to use. (plex.rpi etc.)
+set env DOMAIN to the domain you want to use. (http://plex.rpi etc.)
 
 ```
 export DOMAIN=rpi
+```
+
+## Prepare files
+run prepare_all.sh first to download latest plex before build
+
+```
+sh prepare_all.sh
 ```
