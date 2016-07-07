@@ -57,3 +57,20 @@ services:
       - traefik.frontend.passHostHeader=true
       - traefik.port=8112
       - traefik.frontend.rule=Host:deluge.${DOMAIN}
+
+
+  sonarr:
+    image: lowet84/sonarr-rpi
+    build: ./sonarr
+    ports:
+     - 8989:8989/tcp
+     - 9898:9898/tcp
+    privileged: true
+    volumes:
+     - /volumes/mediaserver/sonarr:/config
+     - /media:/mnt
+    labels:
+      - traefik.backend=sonarr
+      - traefik.frontend.passHostHeader=true
+      - traefik.port=8989
+      - traefik.frontend.rule=Host:sonarr.${DOMAIN}
