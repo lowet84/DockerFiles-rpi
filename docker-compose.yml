@@ -44,7 +44,8 @@ services:
       - traefik.frontend.rule=Host:plex.${DOMAIN}
 
   deluge:
-    image: jordancrawford/rpi-deluge
+    image: lowet84/deluge-rpi
+    build: ./deluge
     volumes:
      - /volumes/mediaserver/deluge:/config
      - /media:/data
