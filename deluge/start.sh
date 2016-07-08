@@ -49,7 +49,5 @@ fi
 
 echo "Starting deluged and deluge-web."
 
-#su -s /bin/bash deluge -c 'deluged -c /config'
-#su -s /bin/bash deluge -c 'deluge-web -c /config'
 deluged -d -c /config -L info -l /config/deluged.log &
-deluge-web -c /config & wait
+deluge-web -c /config
